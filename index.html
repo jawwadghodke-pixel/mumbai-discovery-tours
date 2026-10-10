@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mumbai Discovery Tours</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #26352f;
+      background: #fffdf8;
+      line-height: 1.6;
+    }
+    header {
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: white;
+    }
+    header strong { font-size: 21px; color: #183d36; }
+    nav a {
+      margin-left: 15px;
+      color: #183d36;
+      text-decoration: none;
+    }
+    .hero {
+      padding: 90px 8%;
+      color: white;
+      background: linear-gradient(90deg, #173b35, #476d5e);
+    }
+    .hero h1 { font-size: clamp(36px, 6vw, 58px); line-height: 1.15; }
+    .hero p { max-width: 580px; font-size: 18px; }
+    .button {
+      display: inline-block;
+      background: #bd803b;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    section { padding: 50px 7%; }
+    h2 { color: #183d36; }
+    .center { text-align: center; margin-bottom: 28px; }
+    .tours {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .tour {
+      padding: 22px;
+      background: white;
+      border: 1px solid #e8e3d9;
+      border-radius: 10px;
+    }
+    .tour h3 { color: #183d36; }
+    .tour p { color: #606b66; }
+    .about { background: #f1efe7; }
+    .booking { max-width: 600px; margin: auto; }
+    label { display: block; margin-top: 15px; font-weight: bold; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font: inherit;
+    }
+    .booking button { margin-top: 20px; width: 100%; }
+    footer {
+      background: #183d36;
+      color: white;
+      padding: 28px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      header { justify-content: center; }
+      nav a { margin: 0 6px; }
+      .hero { padding: 55px 7%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Mumbai Discovery Tours</strong>
+    <nav>
+      <a href="#tours">Tours</a>
+      <a href="#about">About</a>
+      <a href="#booking">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <p>EXPLORE THE CITY WITH US</p>
+      <h1>Discover Mumbai, one experience at a time.</h1>
+      <p>Explore Mumbai's history, architecture, markets and everyday life with guided tours by Jawwad.</p>
+      <a class="button" href="#tours">Explore Our Tours</a>
+    </div>
+
+    <section id="tours">
+      <div class="center">
+        <h2>Explore Our Tours</h2>
+        <p>Choose an experience in Mumbai that interests you.</p>
+      </div>
+      <div class="tours">
+        <article class="tour">
+          <h3>Mumbai Sightseeing</h3>
+          <p>Discover famous landmarks and the city's stories.</p>
+          <button class="button" onclick="pick('Mumbai Sightseeing')">Enquire Now</button>
+        </article>
+        <article class="tour">
+          <h3>Dharavi Tour</h3>
+          <p>Learn about community life, workshops and local industries.</p>
+          <button class="button" onclick="pick('Dharavi Tour')">Enquire Now</button>
+        </article>
+        <article class="tour">
+          <h3>Heritage & Architecture</h3>
+          <p>Explore Mumbai's historic buildings and architectural heritage.</p>
+          <button class="button" onclick="pick('Heritage & Architecture')">Enquire Now</button>
+        </article>
+        <article class="tour">
+          <h3>Dawn & Morning Markets</h3>
+          <p>Experience the city as its markets begin their busy day.</p>
+          <button class="button" onclick="pick('Dawn & Morning Markets')">Enquire Now</button>
+        </article>
+        <article class="tour">
+          <h3>Street Food Tour</h3>
+          <p>Discover Mumbai's popular food culture and flavours.</p>
+          <button class="button" onclick="pick('Street Food Tour')">Enquire Now</button>
+        </article>
+        <article class="tour">
+          <h3>Elephanta Island</h3>
+          <p>Explore the island's famous rock-cut caves and heritage.</p>
+          <button class="button" onclick="pick('Elephanta Island Tour')">Enquire Now</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>Meet Your Guide</h2>
+      <p>My name is Jawwad, founder of Mumbai Discovery Tours. I am a Mumbai-based tour guide offering different guided experiences across the city. I enjoy sharing Mumbai's history, culture, architecture and everyday life with travellers.</p>
+    </section>
+
+    <section id="booking">
+      <div class="center">
+        <h2>Request a Booking</h2>
+        <p>Choose your tour and preferred date to enquire through WhatsApp.</p>
+      </div>
+      <form class="booking" onsubmit="sendBooking(event)">
+        <label for="name">Your name</label>
+        <input id="name" required placeholder="Enter your name">
+
+        <label for="tour">Choose a tour</label>
+        <select id="tour" required>
+          <option value="">Select a tour</option>
+          <option>Mumbai Sightseeing</option>
+          <option>Dharavi Tour</option>
+          <option>Heritage & Architecture</option>
+          <option>Dawn & Morning Markets</option>
+          <option>Street Food Tour</option>
+          <option>Elephanta Island Tour</option>
+          <option>Customised Mumbai Tour</option>
+        </select>
+
+        <label for="date">Preferred date</label>
+        <input id="date" type="date" required>
+
+        <label for="people">Number of travellers</label>
+        <input id="people" type="number" min="1" value="2" required>
+
+        <label for="message">Additional requests</label>
+        <textarea id="message" rows="3" placeholder="Optional"></textarea>
+
+        <button class="button" type="submit">Send Enquiry on WhatsApp</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Mumbai Discovery Tours</strong>
+    <p>Discover Mumbai with Jawwad.</p>
+  </footer>
+
+  <script>
+    // Replace this with your WhatsApp number, including India's 91 code.
+    // Example format: 919876543210
+    const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+
+    function pick(name) {
+      document.getElementById("tour").value = name;
+      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function sendBooking(event) {
+      event.preventDefault();
+
+      if (WHATSAPP_NUMBER.includes("X")) {
+        alert("Add your WhatsApp number in the code first.");
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const tour = document.getElementById("tour").value;
+      const date = document.getElementById("date").value;
+      const people = document.getElementById("people").value;
+      const message = document.getElementById("message").value.trim();
+
+      const text = `Hello Mumbai Discovery Tours!
+Name: ${name}
+Tour: ${tour}
+Preferred date: ${date}
+Travellers: ${people}
+Additional requests: ${message || "None"}
+Please confirm availability and price.`;
+
+      window.open(
+        "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text),
+        "_blank"
+      );
+    }
+  </script>
+</body>
+</html>
